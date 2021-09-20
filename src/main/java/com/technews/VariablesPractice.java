@@ -4,6 +4,7 @@ public class VariablesPractice {
     public static void main(String[] args){
         int lottery=22346;
         double expenditures=7996.99;
-        long sum=lottery+expenditures;
+        double sum=lottery+expenditures;
+        System.out.println(sum);
     }
 }
