@@ -6,5 +6,8 @@ public class VariablesPractice {
         double expenditures=7996.99;
         double sum=lottery+expenditures;
         System.out.println(sum);
+        String whisper="I am that I am!";
+        String strangeFruit=lottery+whisper;
+        System.out.println(strangeFruit);
     }
 }
