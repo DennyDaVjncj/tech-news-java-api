@@ -12,17 +12,19 @@ public class User implements Serializable{
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
     private Integer id;
-    private String username;
+    private String username;//annotation doesn't apply
+
     @Column(unique=true)
     private String email;
-    private String password;
+    private String password;//annotation doesn't apply
+
     @Transient
     private Boolean loggedIn;
 
     @OneToMany(mappedBy="userId",cascade=CascadeType.ALL,fetch=FetchType.EAGER)
-    private List<Post> posts;
+    private List<Post> posts;//info is gathered immediately, EAGER fetchType
     @OneToMany(mappedBy="userId",cascade=CascadeType.ALL,fetch=FetchType.LAZY)
-    private List<Vote> votes;
+    private List<Vote> votes;//this info is gathered when requested, LAZY fetchType
     @OneToMany(mappedBy="userId",cascade=CascadeType.ALL,fetch=FetchType.LAZY)
     private List<Comment> comments;
 
@@ -83,8 +85,19 @@ public class User implements Serializable{
     public void setComments(List<Comment> comments){
         this.comments=comments;
     }
-    @Override
+
+    @Override//superTypes, signatures
     public boolean equals(Object o){
-        if(this==)
+        if(this==o)return true;
+        if(!(o instanceof User))return false;
+        User user=(User) o;
+        return isLoggedIn()==user.isLoggedIn()&&
+                Objects.equals(getId(),user.getId())&&
+                Objects.equals(getUsername(),user.getUsername())&&
+                Objects.equals(getEmail(),user.getEmail())&&
+                Objects.equals(getPassword(),user.getPassword())&&
+                Objects.equals(getPosts(),user.getPosts())&&
+                Objects.equals(getVotes(),user.getVotes())&&
+                Objects.equals(getComments(),user.getComments());
     }
 }
