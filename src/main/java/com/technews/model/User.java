@@ -100,4 +100,15 @@ public class User implements Serializable{
                 Objects.equals(getVotes(),user.getVotes())&&
                 Objects.equals(getComments(),user.getComments());
     }
+    @Override
+    public int hashCode(){
+        return Objects.hash(getId(),getUsername(),getEmail(),getPassword(),isLoggedIn(),getPosts(),getVotes(),getComments());
+    }
+    @Override
+    public String toString(){
+        return "User{" +
+                "id="+id+
+                ", username='" +username+'\''+
+                ", email='"+email+'\''+
+    }
 }
