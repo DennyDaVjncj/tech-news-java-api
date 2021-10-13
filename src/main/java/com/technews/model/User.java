@@ -29,6 +29,7 @@ public class User implements Serializable{
     private List<Comment> comments;
 
     public User(){
+        //I believe this to be the first constructor
     }
     public User(Integer id,String username,String email,String password){
         this.id=id;
