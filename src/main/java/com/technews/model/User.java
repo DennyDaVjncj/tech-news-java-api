@@ -11,12 +11,12 @@ import java.util.Objects;
 public class User implements Serializable{
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
-    private Integer id;
-    private String username;//annotation doesn't apply
+    private Integer id;//instance variable/field
+    private String username;//annotation doesn't apply, only to upper instance field
 
     @Column(unique=true)
     private String email;
-    private String password;//annotation doesn't apply
+    private String password;//annotation doesn't apply, only to upper instance field
 
     @Transient
     private Boolean loggedIn;
@@ -30,6 +30,7 @@ public class User implements Serializable{
 
     public User(){
         //I believe this to be the first constructor
+            //but what is this method for though?
     }
     public User(Integer id,String username,String email,String password){
         this.id=id;
@@ -108,8 +109,14 @@ public class User implements Serializable{
     @Override
     public String toString(){
         return "User{" +
-                "id="+id+
-                ", username='" +username+'\''+
-                ", email='"+email+'\''+
+                "id=" +id+
+                ", username='" +username+'\'' +
+                ", email='" +email+'\'' +
+                ", password='" +password+'\'' +
+                ", loggedIn=" +loggedIn+
+                ", posts" +posts+
+                ", votes=" +votes+
+                ", comments=" +comments+
+                '}';
     }
 }
