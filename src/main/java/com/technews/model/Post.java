@@ -1,5 +1,12 @@
 package com.technews.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+import javax.persistence.Entity;
+
+@Entity
+@JsonIgnoreProperties({"hibernateLazyInitializer","handler"})
+@Table(name="post")
 public class Post {
     private Integer id;
     private String title;
