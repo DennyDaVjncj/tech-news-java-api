@@ -1,8 +1,6 @@
 package com.technews.model;
-
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import groovyjarjarantlr4.v4.runtime.misc.NotNull;
-
 import javax.persistence.*;
 
 @Entity
@@ -14,15 +12,18 @@ public class Post {
     private Integer id;
     private String title;
     private String postUrl;
+
     @Transient
     private String userName;
     @Transient
     private int voteCount;
     private Integer userId;
+
     @NotNull
     @Temporal(TemporalType.Date)
     @Column(name="posted_at ")
     private Date postedAt=new Date();
+
     @NotNull
     @Temporal(TemporalType.DATE)
     @Column(name="updated_at ")
