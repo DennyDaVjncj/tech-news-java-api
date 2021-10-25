@@ -100,4 +100,38 @@ public class Post implements Serializable{
     public void setComments(List<Comment> comments){
         this.comments = comments;
     }
+    @override//existing method functionality is being overridden?
+    public boolean equals(Object o){
+        if(this==o)return true;
+        if(!(o instanceof Post))return false;//line not fully understood
+        Post post=(Post)o;//new instance with reference type being compared to og object?
+        return getVoteCount()==post.getVoteCount()&&
+                Objects.equals(getId(),post.getId())&&
+                Objects.equals(getTitle(),post.getTitle())&&
+                Objects.equals(getPostUrl(),post.getPostUrl())&&
+                Objects.equals(getUserName(),post.getUserName())&&
+                Objects.equals(getUserId(),post.getUserId())&&
+                Objects.equals(getPostedAt(),post.getPostedAt())&&
+                Objects.equals(getUpdatedAt(),post.getUpdatedAt())&&
+                Objects.equals(getComments(),post.getComments());
+    }
+    @override
+    public int hashcode(){
+        return Objects.hash(getId(),getTitle(),getPostUrl(),getUserName(),getVoteCount(),
+                getUserId(),getPostedAt(),getUpdatedAt(),getComments());
+    }
+    @override
+    public String toString(){
+        return "Post{" +
+                "id=" + id +
+                ", title='" + title + '\'' +
+                ", postUrl='" + postUrl + '\'' +
+                ", userName='" + userName + '\'' +
+                ", voteCount=" + voteCount +
+                ", userId=" + userId +
+                ", postedAt=" + postedAt +
+                ", updatedAt=" + updatedAt +
+                ", comments=" + comments +
+                '}';
+    }
 }
