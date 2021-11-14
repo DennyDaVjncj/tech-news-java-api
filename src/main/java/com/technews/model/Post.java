@@ -9,10 +9,10 @@ import java.util.List;
 import java.util.Objects;
 
 @Entity
-@JsonIgnoreProperties({"hibernateLazyInitializer","handler"})
+@JsonIgnoreProperties({"hibernateLazyInitializer","handler"})//props to be ignored when serializing to json
 @Table(name="post")
 public class Post implements Serializable{
-    @Id
+    @Id//id private iField to serve as foreign key/unique identifier
     @GeneratedValue(strategy=GenerationType.AUTO)
     private Integer id;
     private String title;
@@ -45,7 +45,7 @@ public class Post implements Serializable{
         this.postUrl=postUrl;
         this.voteCount=voteCount;
         this.userId=userId;
-    }
+    }//constructor method
     public Integer getId(){
         return id;
     }
