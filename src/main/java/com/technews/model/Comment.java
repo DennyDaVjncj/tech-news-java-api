@@ -50,4 +50,23 @@ public class Comment {
     public void setPostId(Integer postId) {
         this.postId = postId;
     }
+    @Override
+    public boolean equals(Object o){
+        if(this==o)return true;
+        if(!(o instanceof Comment))return false;
+        Comment comment=(Comment)o;//don't understand this logic fully
+        return Objects.equals(getId(),comment.getId())&&
+                Objects.equals(getCommentText(),comment.getCommentText())&&
+                Objects.equals(getUserId(),comment.getUserId())&&
+                Objects.equals(getPostId(),comment.getPostId());//we're comparing columns and vals here?
+    }
+    @Override
+    public String toString(){
+        return "Comment{" +
+                "id=" + id +
+                ", commentText=' " + commentText + '\'' +
+                ", userId=" + userId +
+                ", postId=" + postId +
+                '}';
+    }
 }
