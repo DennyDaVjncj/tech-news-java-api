@@ -13,25 +13,25 @@ import java.util.Objects;
 @Table(name="post")
 public class Post implements Serializable{
     @Id//id private iField to serve as foreign key/unique identifier
-    @GeneratedValue(strategy=GenerationType.AUTO)
+    @GeneratedValue(strategy=GenerationType.AUTO)//clause says that an id int gets gened auto
     private Integer id;
     private String title;
     private String postUrl;
 
-    @Transient
+    @Transient//indicates data that we don't want persisted on our database
     private String userName;
     @Transient
     private int voteCount;
     private Integer userId;
 
-    @NotNull
-    @Temporal(TemporalType.Date)
-    @Column(name="posted_at ")
+    @NotNull//signals to jpa that this column isn't allowed to be null
+    @Temporal(TemporalType.Date)//this annotation allows us to us the date type in our database
+    @Column(name="postedAt")//designates column name
     private Date postedAt=new Date();
 
     @NotNull
     @Temporal(TemporalType.DATE)
-    @Column(name="updated_at ")
+    @Column(name="updatedAt")
     private Date updatedAt=new Date();
 
     @OneToMany(mappedBy="postId",cascade=CascadeType.All,fetch=FetchType.LAZY)
@@ -100,6 +100,7 @@ public class Post implements Serializable{
     public void setComments(List<Comment> comments){
         this.comments = comments;
     }
+
     @override//existing method functionality is being overridden?
     public boolean equals(Object o){
         if(this==o)return true;
