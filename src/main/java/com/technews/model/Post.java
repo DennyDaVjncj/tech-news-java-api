@@ -101,7 +101,7 @@ public class Post implements Serializable{
         this.comments = comments;
     }
 
-    @override//existing method functionality is being overridden?
+    @Override//existing method functionality is being overridden?
     public boolean equals(Object o){
         if(this==o)return true;
         if(!(o instanceof Post))return false;//line not fully understood
@@ -116,12 +116,12 @@ public class Post implements Serializable{
                 Objects.equals(getUpdatedAt(),post.getUpdatedAt())&&
                 Objects.equals(getComments(),post.getComments());
     }
-    @override
+    @Override
     public int hashcode(){
         return Objects.hash(getId(),getTitle(),getPostUrl(),getUserName(),getVoteCount(),
                 getUserId(),getPostedAt(),getUpdatedAt(),getComments());
     }
-    @override
+    @Override
     public String toString(){
         return "Post{" +
                 "id=" + id +
