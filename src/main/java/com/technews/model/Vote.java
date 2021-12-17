@@ -10,7 +10,7 @@ import java.util.Objects;//figure out what these imports are about & when they'r
 public class Vote implements Serializable{
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
-    private Integer id;
+    private Integer id;//instance field
     private Integer userId;
     private Integer postId;
     //instance fields above
@@ -58,7 +58,7 @@ public class Vote implements Serializable{
                 Objects.equals(getUserId(),vote.getUserId())&&
                 Objects.equals(getPostId(),vote.getUserId());
     }
-    @Override
+    @Override//hashcode() isn't used just yet
     public int hashcode(){
         return Objects.hash(getId(),getUserId(),getPostId());
     }
