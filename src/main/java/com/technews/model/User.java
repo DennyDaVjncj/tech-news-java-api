@@ -5,8 +5,8 @@ import java.io.Serializable;
 import java.util.List;
 import java.util.Objects;
 
-@Enity
-@JsonIgnoreProperites({"hibernateLazyInitializer","handler"})
+@Entity
+@JsonIgnoreProperties({"hibernateLazyInitializer","handler"})
 @Table(name="user")
 public class User implements Serializable{
     @Id
