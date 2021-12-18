@@ -116,7 +116,7 @@ public class Post implements Serializable{
                 Objects.equals(getComments(),post.getComments());
     }
     @Override
-    public int hashcode(){
+    public int hashCode(){
         return Objects.hash(getId(),getTitle(),getPostUrl(),getUserName(),getVoteCount(),
                 getUserId(),getPostedAt(),getUpdatedAt(),getComments());
     }

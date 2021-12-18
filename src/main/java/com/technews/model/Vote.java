@@ -60,7 +60,7 @@ public class Vote implements Serializable{
                 Objects.equals(getPostId(),vote.getUserId());
     }
     @Override
-    public int hashcode(){
+    public int hashCode(){
         return Objects.hash(getId(),getUserId(),getPostId());
     }
     @Override
