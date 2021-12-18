@@ -25,7 +25,7 @@ public class Post implements Serializable{
     private Integer userId;
 
     @NotNull//signals to jpa that this column isn't allowed to be null
-    @Temporal(TemporalType.Date)//this annotation allows us to us the date type in our database
+    @Temporal(TemporalType.DATE)//this annotation allows us to us the date type in our database
     @Column(name="postedAt")//designates column name
     private Date postedAt=new Date();
 
@@ -34,7 +34,7 @@ public class Post implements Serializable{
     @Column(name="updatedAt")
     private Date updatedAt=new Date();
 
-    @OneToMany(mappedBy="postId",cascade=CascadeType.All,fetch=FetchType.LAZY)
+    @OneToMany(mappedBy="postId",cascade=CascadeType.ALL,fetch=FetchType.LAZY)
     private List<Comment> comments;
 
     public Post(){
@@ -100,7 +100,6 @@ public class Post implements Serializable{
     public void setComments(List<Comment> comments){
         this.comments = comments;
     }
-
     @Override//existing method functionality is being overridden?
     public boolean equals(Object o){
         if(this==o)return true;

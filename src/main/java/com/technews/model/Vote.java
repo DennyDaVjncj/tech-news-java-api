@@ -49,6 +49,7 @@ public class Vote implements Serializable{
     public void setPostId(Integer postId) {
         this.postId = postId;
     }
+
     @Override
     public boolean equals(Object o){
         if(this==o)return true;
@@ -58,7 +59,7 @@ public class Vote implements Serializable{
                 Objects.equals(getUserId(),vote.getUserId())&&
                 Objects.equals(getPostId(),vote.getUserId());
     }
-    @Override//hashcode() isn't used just yet
+    @Override
     public int hashcode(){
         return Objects.hash(getId(),getUserId(),getPostId());
     }
