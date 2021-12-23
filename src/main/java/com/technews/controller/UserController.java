@@ -17,9 +17,11 @@ public class UserController {
     @Autowired
     VoteRepository voteRepository;
 
-    @GetMapping("/api/users")//first 'GET' request
-    public List<User> getAllUsers(){
+                  //'route'
+    @GetMapping("/api/users")//first 'GET' request. metods without 'void' in signature must have return type
+    public List<User> getAllUsers(){//prgrm will have mltpl users, hence List reference type [able to index trough]
         List<User> userList=repository.findAll();
+
         for (User u:userList){
             List<Post>postList=u.getPosts();
             for(Post p:postList){
