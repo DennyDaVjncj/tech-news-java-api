@@ -19,7 +19,7 @@ public class UserController {
 
     @GetMapping("/api/users")
     public List<User> getAllUsers(){
-        List<User> userList=Repository.findAll();
+        List<User> userList=repository.findAll();
         for (User u:userList){
             List<Post>postList=u.getPosts();
             for(Post p:postList){
@@ -33,7 +33,7 @@ public class UserController {
         User returnUser=repository.getOne(id);
         List<Post>postList=returnUser.getPosts();
         for (Post p:postList){
-            p.setVoteCount(voteRepository.countVotesByPostId(p.getId()))
+            p.setVoteCount(voteRepository.countVotesByPostId(p.getId()));
         }
         return returnUser;
     }
