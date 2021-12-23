@@ -4,6 +4,7 @@ import com.technews.model.User;
 import com.technews.repository.UserRepository;
 import com.technews.repository.VoteRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.security.crypto.bcrypt.BCrypt;
 import org.springframework.web.bind.annotation.*;
 
@@ -53,4 +54,8 @@ public class UserController {
         return user;
     }
     @DeleteMapping("/api/users/{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void deleteUser(@PathVariable int id){
+        repository.deleteById(id);
+    }
 }
