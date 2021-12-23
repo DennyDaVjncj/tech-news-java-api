@@ -10,14 +10,14 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@RestController
+@RestController//allows for json/xml response processing & object sending via API
 public class UserController {
-    @Autowired
+    @Autowired//injects dependencies as needed, optimizing efficiency/app weight. "new" operator instantiates regardless of need
     UserRepository repository;
     @Autowired
     VoteRepository voteRepository;
 
-    @GetMapping("/api/users")
+    @GetMapping("/api/users")//first 'GET' request
     public List<User> getAllUsers(){
         List<User> userList=repository.findAll();
         for (User u:userList){
