@@ -7,7 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.crypto.bcrypt.BCrypt;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
 
 @RestController//allows for json/xml response processing & object sending via API
@@ -34,6 +33,7 @@ public class UserController {
     public User getUserById(@PathVariable Integer id){
         User returnUser=repository.getOne(id);
         List<Post>postList=returnUser.getPosts();
+
         for (Post p:postList){
             p.setVoteCount(voteRepository.countVotesByPostId(p.getId()));
         }
