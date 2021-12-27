@@ -39,7 +39,7 @@ public class UserController {
         }
         return returnUser;
     }
-    @PostMapping("/api/users")
+    @PostMapping("/api/users")//invocation of postMETHOD, adding new info to DB
     public User addUser(@RequestBody User user){
         user.setPassword(BCrypt.hashpw(user.getPassword(),BCrypt.gensalt()));
         repository.save(user);
