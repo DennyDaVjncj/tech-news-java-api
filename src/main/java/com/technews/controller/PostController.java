@@ -41,18 +41,33 @@ public class PostController {
         return post;
     }
     @PutMapping("/api/posts/{id}")
-    public Post updatePost(@PathVariable int id,@RequestBody Post post){
+    public Post updatePost(@PathVariable int id,@RequestBody Post post){//java function
         Post tempPost=repository.getOne(id);
         tempPost.setTitle(post.getTitle());
         return repository.save(tempPost);
     }
     @PutMapping("/api/posts/upvote")
-    public String addVote(@RequestBody Vote vote,HttpServletRequest request){
-        String returnValue="";
+    public String addVote(@RequestBody Vote vote,HttpServletRequest request) {
+        String returnValue = "";
 
-        if(request.getSession(fale)==null){
-            Post returnPost=null;
+        if (request.getSession(fale) == null) {
+            Post returnPost = null;
+            User sessionUser = (User) request.getSession().getAttribute("SESSION_USER");
+            vote.setUserId(sessionUser.getId());
+            voteRepository.save(vote);
+
+            returnPost = repository.getOne(vote.getPostId());
+            returnPost.setVoteCount(voteRepository.countVotesByPostId(vote.getPostId()));
+            returnValue = "";
+
+        } else {
+            returnValue = "login";
         }
+        return returnValue;
     }
-
+    @DeleteMapping("/api/posts/{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void deletePost(@PathVariable int id){
+        repository.deleteById(id);
+    }
 }
