@@ -29,4 +29,9 @@ public class CommentController {
     public Comment updateComment(@RequestBody Comment comment){
         return repository.save(comment);
     }
+    @DeleteMapping("/api/comments/{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void deleteComment(@PathVariable int id){
+        repository.deleteById(id);
+    }
 }
