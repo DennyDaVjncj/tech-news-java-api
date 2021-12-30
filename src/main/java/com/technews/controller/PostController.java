@@ -50,7 +50,7 @@ public class PostController {
     public String addVote(@RequestBody Vote vote,HttpServletRequest request) {
         String returnValue = "";
 
-        if (request.getSession(fale) == null) {
+        if (request.getSession(false) == null) {
             Post returnPost = null;
             User sessionUser = (User) request.getSession().getAttribute("SESSION_USER");
             vote.setUserId(sessionUser.getId());
